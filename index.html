@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SEVENTEEN</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    h1 {
+      font-size: 50px;
+      line-height: 64px;
+      color: #222;
+    }
+
+    h2 {
+      font-size: 46px;
+      line-height: 54px;
+      color: #222;
+    }
+
+    h4 {
+      font-size: 20px;
+      color: #222;
+    }
+
+    h6 {
+      font-size: 25px;
+      font-weight: 700;
+    }
+
+    p {
+      font-size: 16px;
+      color: #465b52;
+      margin: 15px 0 20px 0;
+    }
+
+    .section-p1 {
+      padding: 40px 80px;
+    }
+
+    body {
+      width: 100%;
+    }
+
+    #header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 30px;
+      background: #fcf6fa;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+      z-index: 999;
+      position: sticky;
+      top: 0;
+      left: 0;
+    }
+
+    .logo {
+      width: 60%;
+      height: 50px;
+    }
+
+    #navbar {
+      display: flex;
+      align-items: center;
+    }
+
+    #navbar ul {
+      list-style-type: none;
+      display: flex;
+    }
+
+    #navbar ul li {
+      margin-right: 20px;
+      position: relative;
+    }
+
+    #navbar ul li:last-child {
+      margin-right: 0;
+    }
+
+    #navbar ul li a {
+      color: #000;
+      text-decoration: none;
+    }
+
+    #navbar ul li:hover {
+      border-bottom: 2px solid #F7CACA;
+    }
+
+    #navbar ul li a.active {
+      color: #F7CACA;
+      border-bottom: 2px solid #F7CACA;
+    }
+
+    #navbar ul li a.active::after {
+      width: 30%;
+      height: 2px;
+      background: #F7CACA;
+      position: absolute;
+      bottom: -4px;
+      left: 20px;
+    }
+
+    #navbar #menu-icon {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    #svt {
+      background-image: url("img/2.jpeg");
+      height: 100vh;
+      width: 100%;
+      background-position: top 25% right 0;
+      background-size: cover;
+      padding: 0 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    #svt h4 {
+      padding-bottom: 15px;
+    }
+
+    #svt h1 {
+      color: #F7CACA;
+    }
+
+    #svt button {
+      display: inline-block;
+      margin-top: 1rem;
+      border-radius: 5rem;
+      background: #F7CACA;
+      color: #fff;
+      padding: .9rem 3.5rem;
+      cursor: pointer;
+      font-size: 20px;
+      text-decoration: none;
+    }
+
+    #feature {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      padding: 40px 0;
+    }
+
+    #feature .fe-box {
+      width: 420px;
+      text-align: center;
+      padding: 20px 40px;
+      box-shadow: 20px 20px 34px rgba(0, 0, 0, 0.03);
+      border: 1px solid #fcf6fa;
+      border-radius: 4px;
+      margin: 2px 0;
+    }
+
+    #feature .fe-box img {
+      width: 100%;
+      height: 100%;
+      margin-bottom: 12px;
+    }
+
+    #feature .fe-box:hover {
+      box-shadow: 10px 10px 54px rgba(70, 62, 220, 0.1);
+    }
+
+    #feature .fe-box h6 {
+      display: inline-block;
+      padding: 9px 8px 6px 8px;
+      line-height: 1;
+      border-radius: 4px;
+      color: #088178;
+      background-color: #E0DFDF;
+    }
+
+    .heading {
+      text-align: center;
+      font-size: 6rem;
+      color: #333;
+      padding: 1.5rem 0;
+      margin-top: 5px;
+      margin-bottom: 25px;
+      background: rgba(255, 51, 153, .05);
+      width: 100%;
+    }
+
+    .heading span {
+      color: #F7CACA;
+    }
+
+    .about,
+    .contact {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0 2rem;
+    }
+
+    .about .row,
+    .contact .rowww {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    .about .row .img-container,
+    .contact .rowww .img-containerr {
+      flex: 1 1 40%;
+      position: relative;
+      margin: 20px;
+    }
+
+    .about .row .img-container img,
+    .contact .rowww .img-containerr img {
+      width: 100%;
+      height: calc(100vh - 400px);
+      object-fit: cover;
+      border: 1.5rem solid #fff;
+      border-radius: .5rem;
+      box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+    }
+
+    .about .row .img-container h3,
+    .contact .rowww .img-containerr h3 {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 3rem;
+      background: #fff;
+      width: 100%;
+      padding: 1rem 2rem;
+      text-align: center;
+      mix-blend-mode: screen;
+    }
+
+    .about .row .content,
+    .contact .rowww .contentt {
+      flex: 1 1 40%;
+      margin: 20px;
+    }
+
+    .about .row .content h3,
+    .contact .rowww .contentt h3 {
+      font-size: 3rem;
+      color: #333;
+    }
+
+    .about .row .content p,
+    .contact .rowww .contentt p {
+      font-size: 1.2rem;
+      color: #999;
+      padding: .5rem 0;
+      padding-top: 1rem;
+      line-height: 1.5;
+      text-align: justify;
+    }
+
+    .about .content .button,
+    .contact .contentt .buttonn {
+      display: inline-block;
+      margin-top: 1rem;
+      border-radius: 5rem;
+      background: #F7CACA;
+      color: #fff;
+      padding: .9rem 3.5rem;
+      cursor: pointer;
+      font-size: 20px;
+      text-decoration: none;
+    }
+
+.social-media {
+  list-style: none; /* Remove default list style */
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+}
+
+.social-media li {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.social-media li i {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.social-media li a {
+  font-size: 24px;
+  color: #333;
+  text-decoration: none;
+}
+
+
+    @media only screen and (max-width: 768px) {
+      .about .row,
+      .contact .rowww {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .about .row .img-container,
+      .contact .rowww .img-containerr {
+        flex: 1 1 auto;
+        margin-bottom: 1rem;
+      }
+
+      .about .row .img-container img,
+      .contact .rowww .img-containerr img {
+        height: auto;
+      }
+
+      .about .row .content,
+      .contact .rowww .contentt {
+        flex: 1 1 40rem;
+      }
+
+      #navbar ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background: #fcf6fa;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+      }
+
+      #navbar ul li {
+        margin: 10px 0;
+        text-align: center;
+      }
+
+      #navbar #menu-icon {
+        display: block;
+      }
+    }
+
+    @media only screen and (min-width: 769px) {
+      #navbar ul {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section id="header">
+    <a href="#"><img src="img/logo.png" class="logo" alt=""></a>
+    <div id="navbar">
+      <i id="menu-icon" class="fas fa-bars"></i>
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="cart.html"><i class="fas fa-shopping-cart" aria-hidden="true"></i></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="svt">
+    <h4>Trade-in-offer</h4>
+    <h2>Super value deals</h2>
+    <h1>On all products</h1>
+    <p>Save more with coupons & up to 70% off!</p>
+    <button>Shop Now</button>
+  </section>
+
+  <section id="feature" class="section-p1">
+    <div class="fe-box">
+      <img src="img/9.jpg" alt="">
+      <h6>Free Shipping</h6>
+    </div>
+    <div class="fe-box">
+      <img src="img/10.jpg" alt="">
+      <h6>Save Money</h6>
+    </div>
+    <div class="fe-box">
+      <img src="img/11.jpg" alt="">
+      <h6>Open 24/7</h6>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <h1 class="heading"><span> About </span> us </h1>
+    <div class="row">
+      <div class="img-container">
+        <img src="img/about-us.jpeg" alt="About Us">
+        <h3>Best beauty products</h3>
+      </div>
+      <div class="content">
+        <h3>Why choose us?</h3>
+        <p>At our skincare shop, we prioritize your skin's health and radiance with a curated selection of premium products, backed by science and nature. Our knowledgeable staff offers personalized consultations to ensure each product is perfectly suited to your unique skin type and concerns.</p>
+        <p>We commit to sustainability and ethical practices, ensuring our products are not only effective but also environmentally friendly. Choose us for a skincare experience that combines luxury, efficacy, and a deep care for both you and the planet.</p>
+        <a href="#" class="button">Learn more</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <h1 class="heading"> Contact <span> us </span> </h1>
+    <div class="rowww">
+      <div class="img-containerr">
+        <img src="img/svt.jpg" alt="Contact Us">
+      </div>
+      <div class="contentt">
+        <h3>Contact Us</h3>
+        <p>For any inquiries or assistance, reach out to us through our social media handles:</p>
+        <ul class="social-media">
+          <li><a href="#"><i class="fab fa-facebook"></i> SEVENTEEN</a></li>
+          <li><a href="#"><i class="fab fa-instagram"></i> @saythename_17</a></li>
+          <li><a href="mailto:your-email@example.com"><i class="far fa-envelope"></i> saythename_17@gmail.com</a></li>
+          <li><a href="tel:+1234567890"><i class="fas fa-phone"></i> +05262015</a></li>
+        </ul>
+        <a href="#" class="buttonn">Contact us</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+  const menuIcon = document.getElementById('menu-icon');
+  const navbarUl = document.querySelector('#navbar ul');
+
+  menuIcon.addEventListener('click', () => {
+    navbarUl.style.display = navbarUl.style.display === 'flex' ? 'none' : 'flex';
+  });
+
+  const navbarLinks = document.querySelectorAll('#navbar ul li a');
+
+  navbarLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      navbarLinks.forEach(navLink => navLink.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SEVENTEEN</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+h1 {
+  font-size: 50px;
+  line-height: 64px;
+  color: #222;
+}
+
+h2 {
+  font-size: 46px;
+  line-height: 54px;
+  color: #222;
+  position: relative;
+}
+
+
+
+h4 {
+  font-size: 20px;
+  color: #222;
+}
+
+h6 {
+  font-size: 16px;
+  color: #222;
+  margin: 15px 0 20px 0;
+}
+
+
+p {
+  font-size: 16px;
+  color: #465b52;
+  margin: 15px 0 20px 0;
+}
+
+.section-p1 {
+  padding: 40px 80px;
+}
+
+body {
+  width: 100%;
+}
+
+#header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 30px;
+  background: #fcf6fa;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+  z-index: 999;
+  position: sticky;
+  top: 0;
+  left: 0;
+}
+
+.logo {
+  width: 60%;
+  height: 50px;
+}
+
+#navbar {
+  display: flex;
+  align-items: center;
+}
+
+#navbar ul {
+  list-style-type: none;
+  display: flex;
+}
+
+#navbar ul li {
+  margin-right: 20px;
+}
+
+#navbar ul li:last-child {
+  margin-right: 0;
+}
+
+#navbar ul li a {
+  color: #000;
+  text-decoration: none;
+}
+
+#navbar ul li:hover {
+  border-bottom: 2px solid #F7CACA;
+}
+
+#navbar ul li a.active {
+  color: #F7CACA;
+  border-bottom: 2px solid #F7CACA;
+}
+
+#navbar ul li a.active::after {
+  width: 30%;
+  height: 2px;
+  background: #F7CACA;
+  position: absolute;
+  bottom: -4px;
+  left: 20px;
+}
+
+#cart-count {
+  position: relative;
+  bottom: 10px; 
+  left: 1px;
+  background-color: #F7CACA;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px;
+  margin: 1px auto;
+  width: 100%;
+  max-width: 100%;
+}
+
+#cart-container {
+  overflow-x: auto;
+  width: 100%;
+}
+
+#cart-container table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+  white-space: nowrap;
+}
+
+#cart-container table thead {
+  font-weight: 700;
+  border: 1px;
+}
+
+#cart-container table thead td {
+  background: #F7CACA;
+  color: #fff;
+  border: none;
+}
+
+#cart-container table td {
+  border: 1px solid #b6b3b3;
+  text-align: center;
+  padding: 8px; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  white-space: nowrap; 
+}
+
+#cart-container table tbody {
+  width: 100%;
+  height: 100px;
+}
+
+
+#cart-container table td:nth-child(1) {
+  width: 80px;
+}
+
+#cart-container table td:nth-child(2) {
+  width: 200px;
+}
+
+#cart-container table td:nth-child(4) {
+  width: 100px;
+}
+
+#cart-container table td:nth-child(3),
+#cart-container table td:nth-child(5) {
+  width: 150px;
+}
+
+.quantity input[type="text"] {
+  font-size: 14px;
+  padding: 1px;
+  margin: 0;
+  width: 30px;
+  text-align: center;
+}
+
+.quantity button {
+  font-size: 10px;
+  padding: 3px 3px;
+  margin: 5px;
+}
+
+#cart-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.coupon {
+  flex: 1;
+  margin: 20px;
+  padding: 20px; 
+  border: 1px solid #b6b3b3;
+  background: #F9F9F9;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  height: 70%;
+}
+
+.total {
+  flex: 1;
+  margin: 20px;
+  padding: 20px; 
+  border: 1px solid #b6b3b3;
+  background: #F9F9F9;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.coupon h5, .total h5 {
+  background: #F7CACA;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 10px; 
+  padding: 10px 0; 
+  width: 100%; 
+}
+
+.coupon p, .total p {
+  margin-bottom: 10px;
+}
+
+#cart-bottom .coupon input {
+  width: calc(60% - 10px);
+  padding: 10px; 
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+}
+
+.coupon button, .total button {
+  background: #F7CACA;
+  color: white;
+  padding: 10px 20px; 
+  border: none;
+  cursor: pointer;
+  height: 38px;
+}
+
+#cart-bottom .total div>button {
+margin: 0 12px 20px 0;
+}
+
+.coupon button:hover, .total button:hover {
+  background: #e0a9a9;
+}
+
+.total .d-flex {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.second-hr {
+  border-top: 1px solid #b6b3b3;
+  margin: 10px 0;
+}
+
+
+  #checkout-info-container {
+    display: none;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 1px;
+    max-width: 400px; 
+    margin-bottom: auto; 
+    text-align: center; 
+    position: absolute; 
+    top: 125%; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    border: 1px solid #b6b3b3;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+  #checkout-info-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #f7caca;
+  }
+
+  #checkout-form {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  #checkout-form div {
+    margin-bottom: 20px;
+  }
+
+  #checkout-form label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  #checkout-form input[type="text"],
+  #checkout-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+
+  #checkout-form button[type="submit"] {
+    background-color: #f7caca;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  #checkout-form button[type="submit"]:hover {
+    background-color: #e0a9a9;
+  }
+
+</style>
+</head>
+
+<body>
+  <section id="header">
+    <a href="#"><img src="img/logo.png" class="logo" alt=""></a>
+    <div id="navbar">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a class="active" href="cart.html"><i class="fas fa-shopping-cart" aria-hidden="true"></i><span id="cart-count">0</span></a></li>
+      </ul>
+    </div>
+  </section>
+
+ <section id="cart-details" class="section-p1"> 
+    <h2>Your Cart</h2> 
+  </section>
+
+ <section id="cart-container" class="container">
+  <table width="100%">
+     <thead>
+	<tr>
+	   <td>Remove</td>
+	   <td>Product</td>
+	   <td>Price</td>
+	   <td>Quantity</td>
+	   <td>Total</td>
+	</tr>
+     </thead>
+   
+     <tbody id="cart-body">
+          <!-- Cart items will be dynamically added here -->
+             <tr>
+                    <td><button onclick="removeItem(event)"><i class="fas fa-trash-alt"></button></td>
+                    <td>Product Name</td>
+                    <!-- Within the <td> for price -->
+<td data-currency="₱">Product Price</td>
+
+                    <td>
+                        <div class="quantity">
+                            <button onclick="decrementQuantity(event)">-</button>
+                            <input type="text" value="1" readonly>
+                            <button onclick="incrementQuantity(event)">+</button>
+                        </div>
+                    </td>
+                    <td>Total Price</td>
+                </tr>
+       </tbody>
+
+  </table>
+</section>
+
+<section id="cart-bottom">
+    <div class="coupon">
+      <h5>COUPON</h5>
+      <p>Enter your coupon code if you have one.</p>
+      <div class="coupon-input">
+        <input type="text" placeholder="Coupon Code">
+        <button>APPLY COUPON</button>
+      </div>
+    </div>
+    <div class="total">
+      <h5>CART TOTAL</h5>
+      <div class="d-flex justify-content-between">
+        <h6>Subtotal</h6>
+        <p><span id="subtotal">₱0.00</span></p>
+      </div>
+      <div class="d-flex justify-content-between">
+        <h6>Shipping</h6>
+        <p>₱0.00</p>
+      </div>
+      <hr class="second-hr">
+      <div class="d-flex justify-content-between">
+        <h6>Total</h6>
+        <p><span id="total">₱0.00</span></p>
+      </div>
+      <button class="ml-auto">PROCEED TO CHECKOUT</button>
+    </div>
+  </section>
+
+<section id="checkout-info-container" class="container">
+    <h2>Checkout Information</h2>
+    <form id="checkout-form" onsubmit="return validateForm()">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+            <label for="contact">Contact:</label>
+            <input type="text" id="contact" name="contact" required>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" required>
+        </div>
+        
+        <div>
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" rows="2" required></textarea>
+        </div>
+        <button type="submit">Checkout</button>
+    </form>
+</section>
+
+<div id="thank-you-text" style="display: none; text-align: center;">
+    <h2>Thank you for ordering!</h2>
+</div>
+
+
+<script>
+let cart = [];
+
+        function displayCart() {
+            const cartBody = document.getElementById('cart-body');
+            const subtotalElement = document.getElementById('subtotal');
+            const totalElement = document.getElementById('total');
+            cartBody.innerHTML = ''; 
+
+            let subtotal = 0;
+
+            cart.forEach(item => {
+                const row = document.createElement('tr');
+
+                const removeCell = document.createElement('td');
+                const trashIcon = document.createElement('i'); 
+                trashIcon.classList.add('fas', 'fa-trash-alt'); 
+                trashIcon.style.cursor = 'pointer'; 
+                trashIcon.addEventListener('click', () => removeItem(item)); 
+                removeCell.appendChild(trashIcon); 
+                row.appendChild(removeCell);
+
+                const productCell = document.createElement('td');
+                productCell.textContent = item.name;
+                row.appendChild(productCell);
+
+                const priceCell = document.createElement('td');
+                priceCell.textContent = item.price;
+                row.appendChild(priceCell);
+
+                const quantityCell = document.createElement('td');
+                // Create quantity input and buttons
+                const quantityDiv = document.createElement('div');
+                quantityDiv.classList.add('quantity');
+                const decrementButton = document.createElement('button');
+                decrementButton.textContent = '-';
+                decrementButton.onclick = decrementQuantity;
+                const quantityInput = document.createElement('input');
+                quantityInput.type = 'text';
+                quantityInput.value = item.quantity; 
+        quantityInput.setAttribute('readonly', true);
+                const incrementButton = document.createElement('button');
+                incrementButton.textContent = '+';
+                incrementButton.onclick = incrementQuantity;
+
+                quantityDiv.appendChild(decrementButton);
+                quantityDiv.appendChild(quantityInput);
+                quantityDiv.appendChild(incrementButton);
+
+                quantityCell.appendChild(quantityDiv);
+                row.appendChild(quantityCell);
+
+                const totalCell = document.createElement('td');
+                totalCell.textContent = item.price; 
+                row.appendChild(totalCell);
+
+                cartBody.appendChild(row);
+
+                subtotal += parseFloat(item.price.replace(/[^0-9-.]/g, ''));
+            });
+
+            subtotalElement.textContent = `₱${subtotal.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+            totalElement.textContent = `₱${subtotal.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+        }
+
+        function decrementQuantity(event) {
+    const inputElement = event.target.parentElement.querySelector('input');
+    const rowIndex = getIndex(event.target);
+    let quantity = parseInt(inputElement.value);
+    if (quantity > 1) {
+        quantity--;
+        inputElement.value = quantity;
+        cart[rowIndex].quantity = quantity;
+        updateTotalPrice(inputElement);
+        updateCartCount();
+        saveCart();
+    }
+}
+
+function removeItem(index) {
+    cart.splice(index, 1); 
+    saveCart();
+    updateCartCount();
+    displayCart();
+}
+
+    function incrementQuantity(event) {
+    const inputElement = event.target.parentElement.querySelector('input');
+    const rowIndex = getIndex(event.target);
+    let quantity = parseInt(inputElement.value);
+    quantity++;
+    inputElement.value = quantity;
+    cart[rowIndex].quantity = quantity;
+    updateTotalPrice(inputElement);
+    updateCartCount();
+    saveCart();
+    
+}
+
+function getIndex(button) {
+    const row = button.closest('tr');
+    return Array.from(row.parentElement.children).indexOf(row);
+}
+
+function updateCartCount() {
+    let totalCount = 0;
+    cart.forEach(item => {
+    totalCount += item.quantity;
+    });
+    const cartCountElement = document.getElementById('cart-count');
+    cartCountElement.textContent = totalCount;
+}
+
+        function updateTotalPrice(inputElement) {
+            const row = inputElement.closest('tr');
+            const priceCell = row.cells[2];
+            let currency = priceCell.getAttribute('data-currency');
+            if (!currency) {
+                currency = "₱"; 
+            }
+            const quantity = parseInt(inputElement.value);
+            const totalPriceCell = row.cells[4];
+
+            const priceText = priceCell.textContent.trim().replace(/[^0-9,.]/g, '');
+            const price = parseFloat(priceText.replace(/,/g, ''));
+
+            if (!isNaN(price)) {
+                const totalPrice = price * quantity;
+                totalPriceCell.textContent = currency + totalPrice.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","); 
+                updateSubtotalAndTotal();
+            } else {
+                totalPriceCell.textContent = "Invalid Price";
+            }
+        }
+
+
+        function updateSubtotalAndTotal() {
+            let subtotal = 0;
+            document.querySelectorAll('#cart-body tr').forEach(row => {
+                const totalCell = row.cells[4];
+                const totalText = totalCell.textContent.trim().replace(/[^0-9,.]/g, '');
+                const total = parseFloat(totalText.replace(/,/g, ''));
+                if (!isNaN(total)) {
+                    subtotal += total;
+                }
+            });
+
+            const subtotalElement = document.getElementById('subtotal');
+            const totalElement = document.getElementById('total');
+            subtotalElement.textContent = `₱${subtotal.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+            totalElement.textContent = `₱${subtotal.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+        }
+
+        function removeItem(item) {
+            const index = cart.indexOf(item);
+            if (index !== -1) {
+                cart.splice(index, 1);
+                saveCart();
+                updateCartCount();
+                displayCart();
+            }
+        }
+
+       function updateCartCount() {
+    let totalCount = 0;
+    cart.forEach(item => {
+        totalCount += item.quantity;
+    });
+    const cartCountElement = document.getElementById('cart-count');
+    cartCountElement.textContent = totalCount;
+}
+
+        function saveCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        function loadCart() {
+    const savedCart = localStorage.getItem('cart');
+    if (savedCart) {
+        cart = JSON.parse(savedCart);
+        cart.forEach(item => {
+            if (!item.hasOwnProperty('quantity')) {
+                item.quantity = 1;
+            }
+        });
+        updateCartCount();
+        displayCart();
+    }
+}
+        document.addEventListener('DOMContentLoaded', function () {
+        loadCart();
+
+        const checkoutButton = document.querySelector('#cart-bottom .total button');
+        checkoutButton.addEventListener('click', function (event) {
+        event.preventDefault(); 
+
+        const checkoutSection = document.getElementById('checkout-info-container');
+        checkoutSection.style.display = checkoutSection.style.display === 'none' ? 'block' : 'none';
+        checkoutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+});
+
+function validateForm() {
+    const contactField = document.getElementById('contact');
+    if (contactField.value.trim() === '') {
+        alert('Please provide your contact information.');
+        return false;
+    }
+
+    let alertMessage = 'Thank you for your order!\n\n';
+    alertMessage += 'Contact Information:\n';
+    alertMessage += `- Name: ${document.getElementById('name').value}\n`;
+    alertMessage += `- Contact: ${document.getElementById('contact').value}\n`;
+    alertMessage += `- Email: ${document.getElementById('email').value}\n`;
+    alertMessage += `- Address: ${document.getElementById('address').value}\n\n`;
+    alertMessage += 'Ordered Item(s):\n';
+
+    const cartItems = document.querySelectorAll('#cart-body tr');
+    let total = 0; 
+    cartItems.forEach(item => {
+        const productName = item.querySelector('td:nth-child(2)').textContent;
+        const productPrice = item.querySelector('td:nth-child(3)').textContent;
+        const quantity = item.querySelector('input[type="text"]').value;
+        const totalPrice = item.querySelector('td:nth-child(5)').textContent;
+
+        alertMessage += `${productName} x ${quantity} = ${totalPrice}\n`;
+        total += parseFloat(totalPrice.replace(/[^0-9.]/g, '')); 
+    });
+
+    alertMessage += `\nTotal: ₱${total.toLocaleString()}`; 
+    alert(alertMessage);
+
+    return true;
+}
+
+    function checkout() {
+      document.getElementById('thank-you-text').style.display = 'block';
+
+      cart = [];
+      saveCart();
+      displayCart();
+
+      updateCartCount();
+
+      const checkoutSection = document.getElementById('checkout-info-container');
+      checkoutSection.style.display = 'none';
+    }
+
+      document.addEventListener('DOMContentLoaded', function () {
+      const checkoutForm = document.getElementById('checkout-form');
+      checkoutForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      checkout(); 
+      });
+    });
+
+    </script>
+
+</body>
+</html>
